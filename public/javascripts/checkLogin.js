@@ -15,6 +15,7 @@ loginSubmission.addEventListener("submit", async (event) => {
 
   // attempt to FETCH data from database
   try {
+
     const res = await fetch("/loginSubmission", {
       method: "POST",
       headers: {
@@ -29,6 +30,11 @@ loginSubmission.addEventListener("submit", async (event) => {
 
     //THE JSON with the USERS DATA returned from database
     loginData = await res.json();
+
+    //store userID to localStorage
+    localStorage.setItem("userID", loginData.userID);
+
+    //Error handling
   } catch (error) {
     loginContainerDiv.innerHTML = error.message;
   }
@@ -36,3 +42,4 @@ loginSubmission.addEventListener("submit", async (event) => {
   //run successfulLogin module
   successfulLogin(loginData);
 });
+

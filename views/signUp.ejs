@@ -3,6 +3,7 @@
   <head>
     <title>Sign Up Page</title>
     <link rel="stylesheet" href="/stylesheets/signUp.css" />
+    <link rel="shortcut icon" href="#" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -42,7 +43,7 @@
                     type="password"
                     id="password"
                     name="password"
-                    minlength="8"
+                    minlength="3"
                     onkeyup="check()"
                     required
                   />
@@ -52,7 +53,7 @@
                   <input
                     type="password"
                     name="confirmPassword"
-                    minlength="8"
+                    minlength="3"
                     id="confirmPassword"
                     onkeyup="check()"
                     required
@@ -69,6 +70,9 @@
                 class="row d-flex justify-content-center"
                 id="misMatchPassword"
               ></div>
+              <div>
+                <a href="/">Go Back Home</a>
+              </div>
             </div>
           </form>
         </div>
