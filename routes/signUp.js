@@ -1,59 +1,55 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
-<<<<<<< HEAD
+// <<<<<<< HEAD
 const dbManager = require("../database/dbManager.js");
-=======
-const mongoose = require("mongoose");
-const UserLoginDB = require("../database/userSchema.js");
 
-mongoose.connect("mongodb://localhost/UserLoginDB");
->>>>>>> f3e9a73ed5ce94691c6f561a5174d6a1431a0815
-
-// console.log(UserLoginDB);
-// console.log(mongoose.model("UserLoginDB")); //How I named the model
-
-//
-
-/* Renders the signUp page*/
 router.get("/", function (req, res) {
   res.render("signUp");
 });
 
 //Save user info.
 router.post("/create", async (req, res) => {
-<<<<<<< HEAD
-  bcrypt.hash(req.body.password, 10, (err, hash) => {
+  console.log("at create");
+
+  await bcrypt.hash(req.body.password, 10, (err, hash) => {
     if (err) {
       throw err;
     }
     console.log("encrypting password");
+
+    if (req.body.password != req.body.confirmPassword) {
+      res.send({ passwordMismatch: true });
+    }
     req.body.password = hash;
+    req.body.confirmPassword = hash;
 
     dbManager.addUser(req.body).then((userExist) => {
-      console.log(userExist);
       if (userExist) {
-        res.send("User exists? True");
+        res.send({
+          passwordMismatch: false,
+          success: false,
+        });
       } else {
-        res.redirect("/");
+        res.send({ passwordMismatch: false, success: true });
       }
     });
   });
 });
 
-=======
-  const record = req.body;
-  console.log(record);
-  await UserLoginDB.create(record).catch((err) => {
-    res.send("ERROR");
-  });
-  res.redirect("/");
-});
+// =======
+//   const record = req.body;
+//   console.log(record);
+//   await UserLoginDB.create(record).catch((err) => {
+//     res.send("ERROR");
+//   });
+//   res.redirect("/");
+// });
 
-router.get("/getUser", async (req, res) => {
-  const record = await UserLoginDB.find({ userID: "cats" });
-  res.json(record);
-});
+// router.get("/getUser", async (req, res) => {
+//   const record = await UserLoginDB.find({ userID: "cats" });
+//   res.json(record);
+// });
 
 // Place to store user info - until we learn mongoDB.
 // const users = require("../database/UserLoginDB.json");
@@ -85,5 +81,5 @@ router.get("/getUser", async (req, res) => {
 //   res.redirect("/signUp");
 // });
 
->>>>>>> f3e9a73ed5ce94691c6f561a5174d6a1431a0815
+// >>>>>>> f3e9a73ed5ce94691c6f561a5174d6a1431a0815
 module.exports = router;

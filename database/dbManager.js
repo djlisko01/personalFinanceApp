@@ -9,16 +9,16 @@ function dbManager() {
   const db = {};
   const dbName = "UserLoginDB";
   const url = "mongodb://localhost:27017";
-  const collectionName = "userlogininfos";
+  const collectionName = "userlogindbs";
 
   db.addUser = async (userInfo) => {
     try {
       let value = await db.searchUser({ userID: userInfo.userID });
       await mongoose.connect("mongodb://localhost/UserLoginDB");
-      console.log("connected to mongoose", value);
+      console.log("connected to mongoose:", value);
       if (value === null) {
         await userLoginInfo.create(userInfo);
-        console.log(`user ${userInfo.userID} to database`);
+        console.log(`user ${userInfo.userID} added to database`);
         return false;
       } else {
         console.log(`user name: ${userInfo.userID} already in use`);
