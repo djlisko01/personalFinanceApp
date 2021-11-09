@@ -8,6 +8,9 @@ function dbManager() {
   const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@personalfinance.llaag.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
   const url = uri;
   // const url = "mongodb://localhost:27017";
+  
+  //Annie: It's better to delete all useless code before publishing like all console.log for debugging.
+  
   const collectionUser = "userlogindbs";
   const collectionBudgetActual = "actualbudgetdatas";
 
