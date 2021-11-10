@@ -420,3 +420,8 @@ function dbManager() {
   return database;
 }
 module.exports = dbManager();
+
+// Randy Lirano Review
+// I like how you do a check to see if a credential is already exist.
+// The url could be combined with the url for localhost connection using ||, just like the professor demonstrated.
+// I think since you provide instruction to run locally, it will be nice to include the JSON file so someone who clone your repo could build the local DB instead.
