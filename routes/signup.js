@@ -36,3 +36,8 @@ router.post("/create", async (req, res) => {
 });
 
 module.exports = router;
+
+// Randy Lirano Review
+// You should delete the file that you don't use.
+// You have 2 files named Sign Up, the only difference is the upper and lower case.
+// Even if you use both files, try to have a more descriptive name. I think this could benefit you as well to avoid typo or confusion.
